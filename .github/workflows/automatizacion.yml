@@ -24,6 +24,9 @@ jobs:
       - name: Ejecutar script
         run: python script.py
 
+      - name: Verificar archivos en carpeta
+        run: ls -la
+
       - name: Guardar archivo como artifact
         uses: actions/upload-artifact@v4
         with:
