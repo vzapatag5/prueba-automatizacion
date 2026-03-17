@@ -1,9 +1,7 @@
 name: Automatizacion prueba
 
 on:
-  schedule:
-    - cron: "0 10 * * *"  # todos los días
-  workflow_dispatch: # para ejecutarlo manual
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -11,18 +9,23 @@ jobs:
 
     steps:
       - name: Clonar repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Instalar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
       - name: Instalar dependencias
         run: |
-          pip install -r requirements.txt
           pip install playwright
-            playwright install --with-deps
+          playwright install --with-deps
 
       - name: Ejecutar script
         run: python script.py
+
+      - name: Guardar archivo como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-descargado
+          path: archivo_prueba.csv
