@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 
 def run():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # para ver qué pasa
+        browser = p.chromium.launch(headless=True)  # para ver qué pasa
         page = browser.new_page()
 
         # Página de prueba directa

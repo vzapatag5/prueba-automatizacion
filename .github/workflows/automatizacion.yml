@@ -21,7 +21,8 @@ jobs:
       - name: Instalar dependencias
         run: |
           pip install -r requirements.txt
-          playwright install
+          pip install playwright
+            playwright install --with-deps
 
       - name: Ejecutar script
         run: python script.py
